@@ -72,7 +72,6 @@ export class Minesweeper {
      * @param {number} y
      */
     reveal(x, y) {
-        console.log("Donkey")
     }
 
     /**
@@ -82,7 +81,6 @@ export class Minesweeper {
      * @param {number} y
      */
     toggleFieldState(x, y) {
-        console.log("Swine")
     }
 
 }
