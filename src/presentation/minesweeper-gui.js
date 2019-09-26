@@ -26,13 +26,14 @@ export class MinesweeperGUI {
             const row = document.createElement('tr');
             for (let j = 0; j < this.game.columns; j++) {
                 const cell = document.createElement('td');
-
                 cell.innerHTML = this._getIcon(i, j);
                 cell.addEventListener('click', () => {
-                    this.game.reveal(i, j);
+                    this.game.reveal(j, i);
+                    this.draw();
                 });
                 cell.addEventListener('contextmenu', (e) => {
-                    this.game.toggleFieldState(i, j);
+                    this.game.toggleFieldState(j, i);
+                    this.draw();
                     e.preventDefault()
                 });
 

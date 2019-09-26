@@ -66,12 +66,13 @@ export class Minesweeper {
 
     /**
      * TODO: IMPLEMENT THIS
-     * Reveals the the field and all empty connected fields around it.
+     * Reveals the field and all empty connected fields around it.
      * Or stops the game if clicked on a position, where a bomb is located.
      * @param {number} x
      * @param {number} y
      */
     reveal(x, y) {
+
     }
 
     /**
