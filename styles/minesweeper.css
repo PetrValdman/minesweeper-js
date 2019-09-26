@@ -1,0 +1,20 @@
+body {
+    height: calc(100vh);
+}
+
+#game {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#game > table {
+    border-collapse: collapse;
+}
+
+#game > table > tr > td {
+    border: 1px solid #e6e6e6;
+    width: 32px;
+    height: 32px;
+}
