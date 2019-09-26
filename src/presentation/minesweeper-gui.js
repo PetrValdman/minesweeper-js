@@ -20,6 +20,19 @@ export class MinesweeperGUI {
     draw() {
         this._clear();
 
+        const container = document.createElement('div');
+        const header = document.createElement('h2');
+        const smallHeader  = document.createElement('h3');
+
+        smallHeader.innerHTML = `Mines left: ${this.game.getRemainingBombCount()}`;
+
+        if(this.game.didWin())
+            header.innerHTML = `Minesweeper (<span class="green">Won</span>)`;
+        else if(this.game.didLoose())
+            header.innerHTML = `Minesweeper (<span class="red">Lost</span>)`;
+        else
+            header.innerHTML = `Minesweeper (<span class="orange">In Progress</span>)`;
+
         const table = document.createElement('table');
 
         for (let i = 0; i < this.game.rows; i++) {
@@ -42,6 +55,8 @@ export class MinesweeperGUI {
             table.appendChild(row);
         }
 
+        this.container.appendChild(header);
+        this.container.appendChild(smallHeader);
         this.container.appendChild(table);
     }
 

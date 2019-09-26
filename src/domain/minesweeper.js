@@ -84,4 +84,30 @@ export class Minesweeper {
     toggleFieldState(x, y) {
     }
 
+    /**
+     * TODO: IMPLEMENT THIS
+     * Returns if the user already won
+     * @returns {boolean}
+     */
+    didWin() {
+        return false;
+    }
+
+    /**
+     * TODO: IMPLEMENT THIS
+     * Returns if the user clicked a bomb and therefore lost.
+     * @returns {boolean}
+     */
+    didLoose() {
+        return false;
+    }
+
+    /**
+     * Returns the remaining amount bombs, user has to select
+     * @return {number}
+     */
+    getRemainingBombCount() {
+        return -1;
+    }
+
 }
