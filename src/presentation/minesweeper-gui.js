@@ -27,7 +27,14 @@ export class MinesweeperGUI {
             for (let j = 0; j < this.game.columns; j++) {
                 const cell = document.createElement('td');
 
-                cell.textContent = this._getIcon(i, j);
+                cell.innerHTML = this._getIcon(i, j);
+                cell.addEventListener('click', () => {
+                    this.game.reveal(i, j);
+                });
+                cell.addEventListener('contextmenu', (e) => {
+                    this.game.toggleFieldState(i, j);
+                    e.preventDefault()
+                });
 
                 row.appendChild(cell);
             }
@@ -55,16 +62,24 @@ export class MinesweeperGUI {
      * @private
      */
     _getIcon(x, y) {
-        switch(this.game.getField(x, y)) {
-            case field.hidden:
-                return '';
-            case field.visible:
-                return `${this.game.getFieldValue(x, y)}`; //Return number
-            case field.flag:
-                return 'P';
-            case field.question_mark:
-                return '?';
-        }
+        if (this.game.isGameOver && this.game.isBombOnPosition(x, y))
+            return '💣';
+        else
+            switch (this.game.getField(x, y)) {
+                case field.hidden:
+                    return '<div class="hidden">&nbsp;</div>';
+                case field.visible:
+                    const amount = this.game.getAmountOfSurroundingBombs(x, y); //Return number
+                    return `
+                        <div class="empty">
+                            ${amount === 0 ? ' ' : amount}
+                        </div>
+                    `;
+                case field.flag:
+                    return '<div class="hidden">🏴</div>';
+                case field.question_mark:
+                    return '<div class="hidden">❓</div>';
+            }
     }
 }
 

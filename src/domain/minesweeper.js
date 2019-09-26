@@ -11,7 +11,9 @@ export class Minesweeper {
         this.rows = rows;
         this.columns = columns;
 
-        if(bombs == null)
+        this.isGameOver = false;
+
+        if (bombs == null)
             this.bombs = this._calculateDefaultBombs();
         else
             this.bombs = bombs;
@@ -25,7 +27,7 @@ export class Minesweeper {
      * @return {number} amount of bombs
      */
     _calculateDefaultBombs() {
-        return 10; //Returns 10 for debugging purposes
+        return 10;
     }
 
     /**
@@ -37,7 +39,7 @@ export class Minesweeper {
      * @return {field}
      */
     getField(x, y) {
-        return field.question_mark
+        return field.hidden;
     }
 
     /**
@@ -47,8 +49,40 @@ export class Minesweeper {
      * @param {number} y
      * @return {number}
      */
-    getFieldValue(x, y) {
+    getAmountOfSurroundingBombs(x, y) {
         return 0;
+    }
+
+    /**
+     * TODO: IMPLEMENT THIS
+     * Returns true there is a bomb on the position
+     * @param {number} x
+     * @param {number} y
+     * @return {boolean}
+     */
+    isBombOnPosition(x, y) {
+        return true;
+    }
+
+    /**
+     * TODO: IMPLEMENT THIS
+     * Reveals the the field and all empty connected fields around it.
+     * Or stops the game if clicked on a position, where a bomb is located.
+     * @param {number} x
+     * @param {number} y
+     */
+    reveal(x, y) {
+        console.log("Donkey")
+    }
+
+    /**
+     * TODO: IMPLEMENT THIS
+     * Toggles the field state, if it has not been revealed yet.
+     * @param {number} x
+     * @param {number} y
+     */
+    toggleFieldState(x, y) {
+        console.log("Swine")
     }
 
 }

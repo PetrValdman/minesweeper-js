@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 body {
-    height: calc(100vh);
+    height: 100vh;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #game {
@@ -14,7 +17,38 @@ body {
 }
 
 #game > table > tr > td {
-    border: 1px solid #e6e6e6;
+    border: 1px solid #cdd3d7;
     width: 32px;
     height: 32px;
+
+    margin-right: -1px;
+    margin-top: -1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+}
+
+#game > table > tr > td > .hidden, #game > table > tr > td > .empty {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#game > table > tr > td > .hidden {
+    background-color: #eeeeee;
+    cursor: pointer;
+    transition: all 0.125s;
+}
+
+#game > table > tr > td > .hidden:hover {
+    background-color: #e6e6e6;
+}
+
+#game > table > tr > td > .empty {
+    background-color: white;
 }

@@ -5,8 +5,6 @@ window.onload = () => {
             const MinesweeperGUI = module.MinesweeperGUI;
             const component = document.getElementById("game");
 
-            console.log(component);
-
             const game = new MinesweeperGUI(component, 10, 10, 5);
             game.draw();
         });
