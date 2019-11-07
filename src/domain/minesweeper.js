@@ -1,4 +1,4 @@
-import {field} from "./models/field.js";
+import { field } from "./models/field.js";
 
 export class Minesweeper {
 
@@ -17,7 +17,22 @@ export class Minesweeper {
             this.bombs = this._calculateDefaultBombs();
         else
             this.bombs = bombs;
+
+        this.logic = [];
+
+        for (let i = 0; i <= this.columns; i++) {
+            let a = [];
+            for (let j = 0; j <= this.rows; j++) {
+                a.push(field.hidden);
+            }
+            this.logic.push(a);
+        }
+
     }
+
+
+
+
 
     /**
      * TODO: IMPLEMENT THIS
@@ -27,6 +42,7 @@ export class Minesweeper {
      * @return {number} amount of bombs
      */
     _calculateDefaultBombs() {
+        console.log("calculateDefaultBombs")
         return 10;
     }
 
@@ -39,7 +55,8 @@ export class Minesweeper {
      * @return {field}
      */
     getField(x, y) {
-        return field.hidden;
+        console.log("getField")
+        return this.logic[x][y];
     }
 
     /**
@@ -50,6 +67,7 @@ export class Minesweeper {
      * @return {number}
      */
     getAmountOfSurroundingBombs(x, y) {
+        console.log("getAmountOfSurroundingBombs")
         return 0;
     }
 
@@ -61,6 +79,7 @@ export class Minesweeper {
      * @return {boolean}
      */
     isBombOnPosition(x, y) {
+        console.log("isBombOnPosition")
         return true;
     }
 
@@ -72,6 +91,9 @@ export class Minesweeper {
      * @param {number} y
      */
     reveal(x, y) {
+        console.log("reveal")
+
+        this.logic[x][y] = field.visible
 
     }
 
@@ -82,6 +104,18 @@ export class Minesweeper {
      * @param {number} y
      */
     toggleFieldState(x, y) {
+        console.log("toggleFieldState")
+        if (this.logic[x][y] === field.hidden) {
+            this.logic[x][y] = field.flag
+
+        } else if (this.logic[x][y] === field.flag) {
+            this.logic[x][y] = field.question_mark
+
+        } else if (this.logic[x][y] === field.question_mark) {
+            this.logic[x][y] = field.hidden
+
+        }
+
     }
 
     /**
@@ -90,24 +124,32 @@ export class Minesweeper {
      * @returns {boolean}
      */
     didWin() {
+        console.log("didWin")
         return false;
     }
 
     /**
      * TODO: IMPLEMENT THIS
-     * Returns if the user clicked a bomb and therefore lost.
+     * Returns if the user clicked a bomb and therefore lost. not done???
      * @returns {boolean}
      */
     didLoose() {
-        return false;
+            console.log("didLoose")
+            return false;
+            if (this.logic[x][y] === field.visible) {
+                if (this.logic === isBombOnPosition) {
+                    return true;
+                }
+            }
+        }
+        /**
+         * Returns the remaining amount bombs, user has to select
+         * @return {number}
+         */
+    getRemainingBombCount() {
+        console.log("getRemainingBombCount")
+        return 5;
     }
 
-    /**
-     * Returns the remaining amount bombs, user has to select
-     * @return {number}
-     */
-    getRemainingBombCount() {
-        return -1;
-    }
 
 }

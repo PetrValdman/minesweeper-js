@@ -1,5 +1,5 @@
-import {Minesweeper} from "../domain/minesweeper.js";
-import {field} from "../domain/models/field.js";
+import { Minesweeper } from "../domain/minesweeper.js";
+import { field } from "../domain/models/field.js";
 
 export class MinesweeperGUI {
 
@@ -22,13 +22,13 @@ export class MinesweeperGUI {
 
         const container = document.createElement('div');
         const header = document.createElement('h2');
-        const smallHeader  = document.createElement('h3');
+        const smallHeader = document.createElement('h3');
 
         smallHeader.innerHTML = `Mines left: ${this.game.getRemainingBombCount()}`;
 
-        if(this.game.didWin())
+        if (this.game.didWin())
             header.innerHTML = `Minesweeper (<span class="green">Won</span>)`;
-        else if(this.game.didLoose())
+        else if (this.game.didLoose())
             header.innerHTML = `Minesweeper (<span class="red">Lost</span>)`;
         else
             header.innerHTML = `Minesweeper (<span class="orange">In Progress</span>)`;
@@ -81,7 +81,7 @@ export class MinesweeperGUI {
         if (this.game.isGameOver && this.game.isBombOnPosition(x, y))
             return '💣';
         else
-            switch (this.game.getField(x, y)) {
+            switch (this.game.getField(y, x)) {
                 case field.hidden:
                     return '<div class="hidden">&nbsp;</div>';
                 case field.visible:
@@ -92,11 +92,9 @@ export class MinesweeperGUI {
                         </div>
                     `;
                 case field.flag:
-                    return '<div class="hidden">🏴</div>';
+                    return '<div class="hidden">F</div>';
                 case field.question_mark:
                     return '<div class="hidden">❓</div>';
             }
     }
 }
-
-
